@@ -90,6 +90,12 @@ namespace GWServerPx
 
             string ver = gW.Request("ver");
             // вернуть список имеющихся в HASP лицензий после обновления в текстовом формате или в формате html 
+
+            //-запрос на обновление содержимого ключа HASP с сервера компании ИНГИТ.Возвращает 'updated', если содержимое ключа изменилось или 'no changes', если обновлений не произошло
+            bool updated = gW.Request("hasp update").Contains("updated");
+            if (updated)
+                Logger.Info("Обновлено содержиое ключа HASP!");
+
             string data = gW.Request("hasp text");
             /* ответ в виде текста
             Ключ номер: #####
